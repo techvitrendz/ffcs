@@ -1,0 +1,120 @@
+.component {
+  width: 100%;
+}
+
+.inputCover {
+  width: 100%;
+  min-width: 200px;
+  height: 40px;
+  background-color: #f3f3f3;
+  position: relative;
+  padding: 10px 10px;
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 1px solid #c1c1c1;
+}
+
+.inputCover > input {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border: none;
+  font-size: 12px;
+  padding: 5px 20px 0px 5px;
+  background-color: rgba(0, 0, 0, 0);
+  caret-color: rgb(0, 0, 0);
+  color: #A7B2B8;
+  letter-spacing: 1px;
+  outline: none !important;
+}
+
+.inputCover > label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 20px;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.inputCover > input:focus + .inputLabel {
+  transform: translate(-25px, -15px) scale(0.6);
+}
+
+.valid {
+  transform: translate(-25px, -15px) scale(0.6);
+}
+
+.inputCover > button {
+  width: 50px;
+  object-fit: contain;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: all 0.3s ease-in-out;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.inputCover > button:hover {
+  background: rgb(124, 110, 245);
+  box-shadow: 4px 4px 3px 1px rgba(88, 88, 88, 0.493);
+  opacity: 0.8;
+  transition: all 0.3s ease-in-out;
+  color: #fff;
+}
+
+.auto_options,
+.auto_options_none {
+  transition: 300ms;
+  background-color: rgba(238, 238, 238, 0.4);
+  box-shadow: 5px 10px 12px -4px rgb(99, 99, 99);
+  list-style-type: none;
+  padding: 0;
+  /* border: red solid; */
+  width: 35%;
+  min-width: 200px;
+  margin-right: 0px;
+  margin-top: 10px;
+}
+
+@media (max-width: 998px) {
+  .auto_options,
+  .auto_options_none {
+    min-width: 80%;
+  }
+}
+
+.auto_options_none {
+  transition: 300ms;
+  display: none;
+}
+
+.auto_options > li,
+.auto_options_none > li {
+  border-bottom: solid 1px rgba(231, 215, 217, 0.493);
+  padding: 10px 15px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 300ms;
+  backdrop-filter: blur(15px);
+}
+
+.auto_options > li:hover {
+  background-color: #54a7d4;
+  color: aliceblue;
+  opacity: 1;
+  padding-left: 30px;
+  transition: 300ms;
+}
+
+@media (max-width: 470px) {
+  .component {
+    max-width: 97%;
+  }
+}

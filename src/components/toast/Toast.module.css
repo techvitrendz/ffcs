@@ -1,0 +1,83 @@
+.componentGreen {
+  width: 320px;
+  min-height: 60px !important;
+  display: flex;
+  align-items: center;
+  /* padding: 10px 20px; */
+  padding-right: 20px;
+  position: fixed !important;
+  top: 20px;
+  left: 20px;
+  z-index: 9999 !important;
+  border-radius: 10px !important;
+  animation: swipeIn 0.5s;
+  transition: all 0.35s ease-in-out linear;
+  background: #388e3c;
+  color: #fff;
+  font-size: 8px !important;
+}
+
+.componentYellow {
+  max-width: 400px;
+  min-height: 60px !important;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+  position: fixed !important;
+  top: 20px;
+  left: 20px;
+  z-index: 9999 !important;
+  border-radius: 10px !important;
+  animation: swipeIn 0.5s;
+  transition: all 0.35s ease-in-out linear;
+  background: #f7c028;
+  color: #fff;
+  font-size: 8px !important;
+}
+.componentRed {
+  max-width: 500px;
+  min-height: 60px !important;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+  position: fixed !important;
+  top: 20px;
+  left: 20px;
+  z-index: 9999 !important;
+  border-radius: 10px !important;
+  animation: swipeIn 0.5s;
+  transition: all 0.35s ease-in-out linear;
+  background: #ff5252;
+  color: #fff;
+  font-size: 8px !important;
+}
+
+@keyframes swipeIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.imgCover {
+  padding: 2px;
+  background: #fff;
+  /* border-radius: 50%; */
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  min-width: 60px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 5px !important; */
+  margin: 0px 10px 0px 0px !important;
+}
+
+.imgCover > img {
+  width: 35px;
+  object-fit: contain;
+  margin-left: -4px !important;
+}

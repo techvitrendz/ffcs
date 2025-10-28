@@ -1,0 +1,317 @@
+.neonText {
+  color: #fff;
+  text-shadow: 0 0 7px rgba(255, 0, 0, 1), 0 0 10px rgba(255, 0, 0, 1),
+    0 0 rgba(255, 0, 0, 1), 0 0 42px rgba(255, 0, 0, 1),
+    0 0 82px rgba(255, 0, 0, 1), 0 0 92px rgba(255, 0, 0, 1);
+}
+.buttonDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  padding: 10px;
+  width: 100%;
+}
+.plannerTitle {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.tinyBtnDiv {
+  display: flex;
+  gap: 8px;
+  margin-left: 15px;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  gap: 0px;
+  flex-wrap: wrap;
+  width:100%;
+}
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly;
+
+  flex-wrap: wrap;
+  width:100%;
+}
+
+.tinyBtnDiv{
+   display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 10px;
+}
+/* Ensure buttons have consistent sizing */
+.topRow .MuiButton-root,
+.bottomRow .MuiButton-root {
+  min-width: 160px;
+  height: 40px;
+  font-weight: bold;
+}
+
+.leftButtons, .centerButtons, .rightButtons {
+  display: flex;
+  justify-content:right;
+}
+
+.tinyBtnDiv {
+  display: none;
+}
+/* Make the tiny buttons more visible */
+.tinyBtnDiv .MuiIconButton-root {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.tinyBtnDiv .MuiIconButton-root:hover {
+  background-color: #e0e0e0;
+}
+
+
+@media (max-width: 768px) {
+  .topRow, .bottomRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .tinyBtnGroup {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .topRow .MuiButton-root,
+  .bottomRow .MuiButton-root {
+    min-width: 200px;
+    width: 100%;
+  }
+  
+  .tinyBtnDiv {
+    margin: 10px 0;
+    order: 2; /* Move tiny buttons to the end on mobile */
+  }
+}
+.buttonLook {
+  color: #ffffff;
+  padding: 0.5rem;
+  cursor: pointer;
+  background: rgba(0, 116, 227, 1) !important;
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.buttonLook:hover {
+  box-shadow: 0 8px 32px 0 rgba(223, 0, 227, 0.3);
+}
+
+.timetableDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.mainTable {
+  width: 100%;
+  border-spacing: 0.5rem;
+  height: 100%;
+  margin-top: 1rem;
+  text-align: center;
+  border-collapse: separate;
+}
+.theoryHours {
+  background-color: #428bf9; 
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-color: #3366ff;
+  border-radius: 12px;
+  padding: 8px 6px;          
+  text-align: center;  
+  color: white;        
+  margin: 2px;
+  min-width: 80px;
+}
+
+.labHours {
+  background-color: #ff99cc;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 1.75rem;
+  border-color: #fd6fb6;
+  padding: 0.6rem 1.2rem; 
+  text-align: center; 
+  color:#000000;
+}
+
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.headerRow {
+  height: 4rem;
+  text-align: center;
+  background-color: rgba(255, 0, 255, 0.1); 
+  color: rgb(0, 0, 0);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.headerTitle {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+.titleText {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1976d2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0;
+}
+
+.dataRow {
+  padding: 0.75rem 1.5rem; 
+  border-radius: 12px;  
+  border: 1px solid rgba(200, 200, 200, 0.6);  
+  background-color: transparent;  
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.modeToggleContainer {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.modeToggleBtn {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+
+.lunch {
+    background-color: #f0f0f0;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+  color: #333;
+}
+.filterSlotDrawerDiv{
+  margin-top: 0.2rem;
+}
+
+.table td {
+  width: 120px;  
+  min-height: 2rem;
+}
+
+.customCourseInput {
+  padding: 1rem;
+  margin: 0.5rem;
+  border: 0.5px solid rgb(151, 151, 151);
+  border-radius: 5px;
+  color: #000000;
+  background-color: #ffffff; 
+  transition: all 0.3s ease;
+}
+
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(212, 212, 212);
+  width: 6px;
+  border-radius: 5px;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+
+.rightDrawer,
+.leftDrawer {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #000000;
+  transition: all 0.3s ease;
+}
+.waysBox {
+  margin: 1rem;
+}
+
+.waysBox > div {
+  width: 95%;
+}
+
+.waysTitle {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000000;
+  transition: all 0.3s ease;
+}
+.changeCoursesBtn {
+  margin-top: -1rem;
+  margin-left: 45% !important;
+  width: 10rem;
+  background-color: #d7263d !important;
+  align-self: center;
+  color: #fff !important;
+  border: 1px solid #ffffff !important;
+  text-transform: none;
+  transition: all 0.3s ease;
+}
+.changeCoursesBtn:hover {
+  border: 1px solid #d7263d !important;
+  background-color: #fff !important;
+  color: #d7263d !important;
+  outline: none;
+}
+.feedbackBtn{
+  margin-top: -1rem;
+  float: right;
+  width: 10rem;
+  background-color: #ffffff !important;
+  align-self: center;
+  color: #08b50e !important;
+  border: 1px solid #08b50e !important;
+  text-transform: none;
+  transition: all 0.3s ease;
+}
+.feedbackBtn:hover{
+  border: 1px solid #000 !important;
+  background-color: #fff !important;
+  color: #000000 !important;
+  outline: none;
+}
+.warningText{
+  font-size: 10px;
+  margin-left: 1rem;
+  color: #000000;
+  transition: all 0.3s ease;
+}

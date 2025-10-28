@@ -1,0 +1,59 @@
+.inputBoxes {
+  display: grid;
+  grid-template-columns: repeat(5, 15rem);
+}
+
+.list {
+  list-style: none;
+}
+.list > li {
+  margin: 0.5rem;
+}
+.toggle {
+  margin-left: 1.4rem;
+}
+.button {
+  width: 10rem;
+  background-color: #282828  !important;
+  align-self: center;
+  color: #fff !important;
+  border:1px solid #ffffff !important;
+  text-transform: none;
+}
+.button:hover{
+    border:1px solid #282828 !important;
+    color:#282828 !important;
+    background-color:#ffffff !important;
+    outline: none;
+}
+.icon {
+  color: black;
+}
+.formControl {
+  margin: 1rem !important;
+}
+
+.autoCourseInput {
+  width: 90% !important;
+  background-color: #f3f3f3 !important;
+}
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  width: 12rem;
+}
+
+.text {
+  margin-left: 1rem !important;
+  font-size: 1.2rem !important;
+}
+
+.formLabel {
+  font-size: 1.2rem !important;
+}
+
+.sep{
+  width: 95%;
+  height: 0.2rem;
+  color: #282828; 
+}
