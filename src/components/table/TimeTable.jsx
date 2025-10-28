@@ -25,6 +25,7 @@ import { Pagination } from "@mui/material";
 import usePagination from "../Pagination/Pagination.js";
 import WayTable from "../autoSlot/wayTable/WayTable";
 import { ModeToggle } from "@/components/mode-toggle";
+import { logo } from "@/assets/index.js";
 
 const useStyles = makeStyles((theme) => ({
 	newTT: {
@@ -1743,7 +1744,7 @@ function TimeTable({ higherRef }) {
 											}}
 										>
 											<img
-												src="/src/assets/logo.png"
+												src={logo}
 												alt="VITrendZ Logo"
 												className="w-full h-full object-cover"
 											/>
