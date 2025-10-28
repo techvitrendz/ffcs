@@ -3,7 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 import TimeTable from "@/components/table/TimeTable";
 
-import "./App.css";
+import "./app.css";
 
 function App() {
 	const higherRef = useRef(null);
