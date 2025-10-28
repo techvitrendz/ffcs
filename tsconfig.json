@@ -1,25 +1,11 @@
 {
-	"references": [],
-	"compilerOptions": {
-		"outDir": "dist",
-		"rootDir": "./src",
-		"lib": ["DOM", "DOM.Iterable", "ES6"],
-		"noEmit": false,
-		"checkJs": false,
-		"esModuleInterop": true,
-		"module": "ESNext",
-		"target": "es6",
-		"allowImportingTsExtensions": true,
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"paths": {
-			"@/*": ["./src/*"]
+	"files": [],
+	"references": [
+		{
+			"path": "./tsconfig.app.json"
 		},
-		"forceConsistentCasingInFileNames": true,
-		"strict": true,
-		"allowJs": true,
-		"skipLibCheck": true,
-		"jsx": "react-jsx"
-	},
-	"include": ["src"]
+		{
+			"path": "./tsconfig.node.json"
+		}
+	]
 }
