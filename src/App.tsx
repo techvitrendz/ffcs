@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/react";
 
 import TimeTable from "@/components/table/TimeTable";
 
@@ -15,7 +16,7 @@ function App() {
 				{/* <ModeToggle /> */}
 				<TimeTable higherRef={higherRef} />
 			</div>
-			{/* </div> */}
+			<Analytics />
 		</ThemeProvider>
 	);
 }
