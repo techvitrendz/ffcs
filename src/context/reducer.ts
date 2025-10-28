@@ -79,7 +79,7 @@ export const initialState = {
 	deletedRow: {},
 };
 
-const reducer = (state, action) => {
+const reducer = (state: any, action: any) => {
 	switch (action.type) {
 		case "UPDATE_ROWID":
 			return {
