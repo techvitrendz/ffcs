@@ -26,30 +26,30 @@ import usePagination from "../Pagination/Pagination.js";
 import WayTable from "../autoSlot/wayTable/WayTable";
 import { ModeToggle } from "@/components/mode-toggle";
 const updateRowSelected = (row) => {
-  // Create a unique identifier combining course code and slot
-  const courseUniqueId = `${crCode}-${row.slot}`;
-  
-  // Check if this specific course-slot combination already exists
-  const isAlreadyAdded = addedCourses.some(course => 
-    course.code === crCode && course.slot === row.slot
-  );
+	// Create a unique identifier combining course code and slot
+	const courseUniqueId = `${crCode}-${row.slot}`;
 
-  if (isAlreadyAdded) {
-    // Show appropriate message
-    alert(`Course ${crCode} with slot ${row.slot} is already added!`);
-    return;
-  }
+	// Check if this specific course-slot combination already exists
+	const isAlreadyAdded = addedCourses.some(
+		(course) => course.code === crCode && course.slot === row.slot
+	);
 
-  // If not already added, proceed with adding the course
-  const newCourse = {
-    id: courseUniqueId, // Use unique identifier
-    code: crCode,
-    name: row.course_name, // Make sure this field exists in your data
-    faculty: row.faculty,
-    slot: row.slot,
-    venue: row.venue || 'N/A',
-    credits: row.credits || 3 // Default value if not provided
-  };
+	if (isAlreadyAdded) {
+		// Show appropriate message
+		alert(`Course ${crCode} with slot ${row.slot} is already added!`);
+		return;
+	}
+
+	// If not already added, proceed with adding the course
+	const newCourse = {
+		id: courseUniqueId, // Use unique identifier
+		code: crCode,
+		name: row.course_name, // Make sure this field exists in your data
+		faculty: row.faculty,
+		slot: row.slot,
+		venue: row.venue || "N/A",
+		credits: row.credits || 3, // Default value if not provided
+	};
 };
 const useStyles = makeStyles((theme) => ({
 	newTT: {
@@ -494,16 +494,13 @@ function TimeTable({ higherRef }) {
 
 			let newSeparated = separateSlots(id.row.slot);
 			for (i = 0; i < currentSlot.length; i++) {
-				if (
-  currentSlot[i].row.id === id.row.id &&
-  id.courseType !== "custom"
-) {
-  setAlreadyAdded(true);
-  setaddCourseDrawerState(false);
-  flag = true;
-  setSuggestionsToast(false);
-  break;
-}
+				if (currentSlot[i].row.id === id.row.id && id.courseType !== "custom") {
+					setAlreadyAdded(true);
+					setaddCourseDrawerState(false);
+					flag = true;
+					setSuggestionsToast(false);
+					break;
+				}
 
 				let currentSeparated = separateSlots(currentSlot[i].row.slot);
 				for (j = 0; j < newSeparated?.length; j++) {
@@ -619,40 +616,39 @@ function TimeTable({ higherRef }) {
 			setSuggestionsToast(false);
 		}
 	};
-const addCustom = () => {
-  if (
-    !customCode ||
-    !customCourse ||
-    !customSlot ||
-    !customFaculty ||
-    !customCredits
-  ) {
-    window.alert("Please enter valid details");
-    return;
-  }
-  const arraySlots = customSlot
-    .split("+")
-    .map((s) => s.trim())
-    .filter(Boolean);
-  const trimmedSlot = arraySlots.join("+");
-  updateRowSelected({
-    row: {
-      courseowner: "VIT",
-      crcode: customCode.trim().toUpperCase(),
-      cname: customCourse.trim(),
-      ctype: "ETH",
-      slot: trimmedSlot,
-      ename: customFaculty.trim(),
-      id: `custom-${Date.now()}-${Math.random().toString(36).slice(2)}`, // 🔑 unique ID
-      C: Number(customCredits),
-      venue: customVenue.trim(),
-    },
-  });
+	const addCustom = () => {
+		if (
+			!customCode ||
+			!customCourse ||
+			!customSlot ||
+			!customFaculty ||
+			!customCredits
+		) {
+			window.alert("Please enter valid details");
+			return;
+		}
+		const arraySlots = customSlot
+			.split("+")
+			.map((s) => s.trim())
+			.filter(Boolean);
+		const trimmedSlot = arraySlots.join("+");
+		updateRowSelected({
+			row: {
+				courseowner: "VIT",
+				crcode: customCode.trim().toUpperCase(),
+				cname: customCourse.trim(),
+				ctype: "ETH",
+				slot: trimmedSlot,
+				ename: customFaculty.trim(),
+				id: `custom-${Date.now()}-${Math.random().toString(36).slice(2)}`, // 🔑 unique ID
+				C: Number(customCredits),
+				venue: customVenue.trim(),
+			},
+		});
 
-  // 4. Close drawer (no need to rely on customId any more)
-  setLeftState(false);
-};
-
+		// 4. Close drawer (no need to rely on customId any more)
+		setLeftState(false);
+	};
 
 	const valueRef = useRef(""); //creating a refernce for TextField Component
 	// to get the data from api and store in a addCourseDrawerState variable
@@ -1760,7 +1756,7 @@ const addCustom = () => {
 											}}
 										>
 											<img
-												src="/src/assets/logo.png"
+												src="/logo.png"
 												alt="VITrendZ Logo"
 												className="w-full h-full object-cover"
 											/>
