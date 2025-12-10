@@ -25,8 +25,32 @@ import { Pagination } from "@mui/material";
 import usePagination from "../Pagination/Pagination.js";
 import WayTable from "../autoSlot/wayTable/WayTable";
 import { ModeToggle } from "@/components/mode-toggle";
-import { logo } from "@/assets/index.js";
+const updateRowSelected = (row) => {
+  // Create a unique identifier combining course code and slot
+  const courseUniqueId = `${crCode}-${row.slot}`;
+  
+  // Check if this specific course-slot combination already exists
+  const isAlreadyAdded = addedCourses.some(course => 
+    course.code === crCode && course.slot === row.slot
+  );
 
+  if (isAlreadyAdded) {
+    // Show appropriate message
+    alert(`Course ${crCode} with slot ${row.slot} is already added!`);
+    return;
+  }
+
+  // If not already added, proceed with adding the course
+  const newCourse = {
+    id: courseUniqueId, // Use unique identifier
+    code: crCode,
+    name: row.course_name, // Make sure this field exists in your data
+    faculty: row.faculty,
+    slot: row.slot,
+    venue: row.venue || 'N/A',
+    credits: row.credits || 3 // Default value if not provided
+  };
+};
 const useStyles = makeStyles((theme) => ({
 	newTT: {
 		color: "#ffffff",
@@ -410,7 +434,6 @@ function TimeTable({ higherRef }) {
 
 	const { state, dispatch } = useStateValue();
 	const { rowID, monday, tuesday, wednesday, thursday, friday } = state;
-
 	const [credits, setCredits] = useState(0);
 	const [customCode, setCustomCode] = useState("");
 	const [customFaculty, setCustomFaculty] = useState("");
@@ -420,20 +443,14 @@ function TimeTable({ higherRef }) {
 	const [customCourse, setCustomCourse] = useState("");
 	const [customObj, setCustomObj] = useState({});
 	const [customVenue, setCustomVenue] = useState();
-
 	const [courseAdded, setCourseAdded] = useState(false);
 	const [alreadyAdded, setAlreadyAdded] = useState(false);
-
 	const [newArray1, setNewArray1] = useState(monday);
 	const [newArray2, setNewArray2] = useState(tuesday);
 	const [newArray3, setNewArray3] = useState(wednesday);
 	const [newArray4, setNewArray4] = useState(thursday);
 	const [newArray5, setNewArray5] = useState(friday);
-
-	//this ia the state for updating the response object from backend
 	const [possibleWays, setpossibleWays] = useState(autoDummyData);
-
-	//this is if the object is empty
 	const [emptyObj, setEmptyObj] = useState();
 
 	useEffect(() => {
@@ -477,13 +494,16 @@ function TimeTable({ higherRef }) {
 
 			let newSeparated = separateSlots(id.row.slot);
 			for (i = 0; i < currentSlot.length; i++) {
-				if (currentSlot[i].row.id === id.row.id) {
-					setAlreadyAdded(true);
-					setaddCourseDrawerState(false);
-					flag = true;
-					setSuggestionsToast(false);
-					break;
-				}
+				if (
+  currentSlot[i].row.id === id.row.id &&
+  id.courseType !== "custom"
+) {
+  setAlreadyAdded(true);
+  setaddCourseDrawerState(false);
+  flag = true;
+  setSuggestionsToast(false);
+  break;
+}
 
 				let currentSeparated = separateSlots(currentSlot[i].row.slot);
 				for (j = 0; j < newSeparated?.length; j++) {
@@ -599,51 +619,47 @@ function TimeTable({ higherRef }) {
 			setSuggestionsToast(false);
 		}
 	};
+const addCustom = () => {
+  if (
+    !customCode ||
+    !customCourse ||
+    !customSlot ||
+    !customFaculty ||
+    !customCredits
+  ) {
+    window.alert("Please enter valid details");
+    return;
+  }
+  const arraySlots = customSlot
+    .split("+")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const trimmedSlot = arraySlots.join("+");
+  updateRowSelected({
+    row: {
+      courseowner: "VIT",
+      crcode: customCode.trim().toUpperCase(),
+      cname: customCourse.trim(),
+      ctype: "ETH",
+      slot: trimmedSlot,
+      ename: customFaculty.trim(),
+      id: `custom-${Date.now()}-${Math.random().toString(36).slice(2)}`, // 🔑 unique ID
+      C: Number(customCredits),
+      venue: customVenue.trim(),
+    },
+  });
 
-	const addCustom = () => {
-		if (
-			!customCode |
-			!customCourse |
-			!customSlot |
-			!customFaculty |
-			!customCredits
-		) {
-			window.alert("Please enter valid details");
-		} else {
-			let arraySlots = [],
-				i,
-				trimmedSlot;
-			arraySlots = customSlot?.split("+");
-			trimmedSlot = arraySlots[0].trim();
+  // 4. Close drawer (no need to rely on customId any more)
+  setLeftState(false);
+};
 
-			for (i = 1; i < arraySlots.length; i++) {
-				trimmedSlot = trimmedSlot.concat("+", arraySlots[i].trim()); //L1+ L2+ L3 +L4
-			}
-			updateRowSelected({
-				courseType: "custom",
-				row: {
-					courseowner: "VIT",
-					crcode: customCode,
-					cname: customCourse,
-					ctype: "ETH",
-					slot: trimmedSlot,
-					ename: customFaculty,
-					id: customId.toString(),
-					C: customCredits,
-					venue: customVenue,
-				},
-			});
 
-			setCustomId(customId + 1);
-			setLeftState(false);
-		}
-	};
 	const valueRef = useRef(""); //creating a refernce for TextField Component
 	// to get the data from api and store in a addCourseDrawerState variable
 	const [list, setList] = useState([]);
 	//cuurent slot is an empty array
 	const [currentSlot, setCurrentSlot] = useState([]);
-	// const [isChosen, setIsChosen] = useState(false);
+	const [isChosen, setIsChosen] = useState(false);
 	//below hook for the drawer option of add course
 	const [addCourseDrawerState, setaddCourseDrawerState] = useState(false);
 
@@ -930,7 +946,7 @@ function TimeTable({ higherRef }) {
 			<div className={styles.container}>
 				<div className={styles.header}>
 					<h1 className={styles.plannerTitle}>
-						<span>FFCS by VITrendZ</span>
+						<span>FFCS PLANNER</span>
 					</h1>
 					<ModeToggle />
 				</div>
@@ -1744,7 +1760,7 @@ function TimeTable({ higherRef }) {
 											}}
 										>
 											<img
-												src={logo}
+												src="/src/assets/logo.png"
 												alt="VITrendZ Logo"
 												className="w-full h-full object-cover"
 											/>
